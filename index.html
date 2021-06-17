@@ -44,12 +44,12 @@
   <div class="main" id="main">
 
     <!-- HEADER -->
-    <header class="no-user-select">
-      <a href="#" class="home">
+    <header class="no-user-select" id="top">
+      <a href="/" class="home">
         <img src="./assets/images/keiko-logo.png" class="logo" alt="Keiko Corp" />
       </a>
       <!-- sticky header -->
-      <div class="container-nav">
+      <!-- <div class="container-nav"> -->
         <nav class="navbar">
           <label class="toggle-bar-mobile" id="toggle-bar">
             <input type="checkbox" id="toggle-checkbox" aria-label="Toggle Switch" />
@@ -61,56 +61,36 @@
             <span></span>
           </div>
 
-          <ul class="menu">
-            <!--
-            <li>
-              <img src="./assets/images/keiko-logo.png" class="logo" alt="Keiko Corp" />
+          <ul class="menu navbar-list">
+            <li class="nav-item">
+                <a class="navlink" href="#feature">Features</a>
             </li>
-          -->
-            <!-- <li>
-              <a href="#">
-                <button id="home">Home</button>
-              </a>
-            </li> -->
-            <li>
-              <a href="#feature">
-                <button id="contact-btn" role="button" aria-label="Features">Features</button>
-              </a>
+            <li class="nav-item">
+              <a class="navlink" href="#testimonials">Testimonials</a>
             </li>
-            <li>
-              <a href="#testimonials">
-                <button id="contact-btn" role="button" aria-label="Testimonials">Testimonials</button>
-              </a>
+            <li class="nav-item menu-team">
+              <a class="navlink" href="./meet-the-team.html">Team</a>
             </li>
-            <li class="menu-team">
-              <a href="./meet-the-team.html">
-                <button id="contact-btn" role="button" aria-label="Team">Team</button>
-              </a>
+            <li class="nav-item menu-price">
+              <a class="navlink" href="#pricing">Pricing</a>
             </li>
-            <li class="menu-price">
-              <a href="#pricing">
-                <button id="contact-btn" role="button" aria-label="Pricing">Pricing</button>
-              </a>
-            </li>
-            <!-- </ul> -->
 
-            <!-- dropdown btn -->
-            <li class="dropdown" role="navigation" aria-label="More Menu Items">
-              <a class="dropbtn" href="#">
-                More <i class="fas fa-caret-down" id="caret-down"></i>
+            <li class="nav-item more-dropdown" role="navigation" aria-label="More Menu Items">
+              <a class="dropbtn btn-more navlink" href="#">
+                More <i class="fas fa-caret-down caret-down" id="caret-down"></i>
               </a>
-              <div class="dropdown-links">
-                <a class="sub-link" href="about.html">About</a>
-                <a class="sub-link" href="blog.html">Blog</a>
-                <a class="sub-link" href="job-listing.html">Job Listings</a>
-                <a class="sub-link" href="support.html">Support</a>
-                <a class="sub-link" href="faq.html">FAQ</a>
+              <div class="more-links">
+                <a class="sublink" href="about.html">About</a>
+                <a class="sublink" href="blog.html">Blog</a>
+                <a class="sublink" href="job-listing.html">Job Listings</a>
+                <a class="sublink" href="support.html">Support</a>
+                <a class="sublink" href="faq.html">FAQ</a>
               </div>
             </li>
             <!-- end of dropdown btn -->
 
 
-            <li class="dark">
+            <li class="toggle-dark">
               <!-----------------Toggle Button for Dark Mode---------------- -->
               <label class="toggle-bar" id="toggle-bar">
                 <input type="checkbox" id="toggle-checkbox" aria-label="Toggle Switch" />
@@ -119,18 +99,18 @@
               <!-- --------------------------------------- -->
             </li>
 
-            <li class="user-forms">
-              <button class="btn btn-contact" role="button" aria-label="Contact">
-                <a href="./contact.html">Contact</a>
+            <li class="navbar-btns">
+              <button class="navbar-btn btn-contact" role="button" aria-label="Contact">
+                <a class="contact" href="./contact.html">Contact</a>
               </button>
 
-              <button class="btn btn-login" role="button" aria-label="Login">
-                <a href="./login.html">Login</a>
+              <button class="navbar-btn btn-login" role="button" aria-label="Login">
+                <a class="login" href="./login.html">Login</a>
               </button>
             </li>
           </ul>
         </nav>
-      </div>
+      <!-- </div> -->
     </header>
 
     <!-- ******** Hero ******** -->

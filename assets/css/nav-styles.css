@@ -1,46 +1,131 @@
-/* Start navbar styles */
-header {
-  /* If I keep only flex in .container nav */
-  /* max-width: var(--maxWidth); */
-  display: flex;
-  height: 88px;
-  /* padding-top: 5px; */
-  padding: 1rem;
-  margin: 0 auto 6rem;
-}
-.home { /* TIGHT */
-  flex: 0 0 auto;
-}
-.container-nav {
-  flex: 1 1 0;
-  max-width: var(--maxWidth);
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  z-index:999;
-}
-
 .no-user-select {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-/* Sticky Header */
-/*.scroll {
-  position: fixed;
-  z-index: 1;
-  background-color: var(--mainBackground);
-  padding: 0.5rem;
-  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  top: 0px;
-}*/
 
-/* Dark mode toggle button styles */
-/* ----------------------------------------------- */
+header {
+  max-width: var(--maxWidth);
+  display: flex;
+  /* height: 88px; */
+  padding: 1em;
+  margin: 0 auto 6rem;
+}
+.home {
+  flex: 0 0 auto; /* flex: 0 0 10%?; */
+}
+.logo {
+  width: auto;
+  height: 80px;
+  cursor: pointer;
+}
+
+/************ HEADER > NAVIGATION BAR ************/
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 90%;
+}
+.navbar-list {
+  /* flex: 1 1 0; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-item {
+  flex: 0 0 auto;
+  font-size: clamp(1em, 20vw, 1.2em);
+  transition: all ease-in 0.1s;
+  cursor: pointer;
+}
+.nav-item:hover {
+  border-bottom: 2px solid #fe6655;
+  transform: translateY(-3%);
+}
+
+.navlink {
+  color: #423f3f;
+}
+.navlink:hover,
+.navlink.active { /* REMOVE? */
+  color: #000000;
+  /* font-size: 1em; */
+  /* padding: 5px 20px; */
+}
+.navlink.active {
+  font-weight: bold;
+}
+
+/************ NAV BUTTON ************/
+.nav-button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  transform: translate(-50%, 50%);
+}
+.navbar button {
+  background-color: transparent;
+}
+.nav-button span { /* .menu-bar */
+  width: 100%;
+  background-color: var(--toggleBackground);
+  height: 3px;
+}
+
+/************ LOGIN - CONTACT ************/
+.navbar-btn {
+  cursor: pointer;
+  border: 2px solid var(--red);
+  border-radius: 5px;
+  color: var(--red);
+  font-size: clamp(1em, 20vw, 1.2em);
+  padding: 10px 15px; /* !important; */
+  border-radius: 5px;
+}
+[data-theme='dark'] .navbar-btn {
+  color: #fff;
+}
+.navbar-btn a {
+  color: inherit;
+}
+.navbar-btn:hover {
+  color: #fff;
+  background-color: var(--darkRed);
+  transition: 0.3s ease;
+}
+[data-theme='dark'] .navbar-btn:hover {
+  /* color: #fff; */
+  background-color: var(--pricingBackground);
+  transition: 0.3s ease;
+}
+*:focus {
+  outline: 0 !important;
+}
+
+.toggle-bar-mobile {
+  margin: 0 54px;
+  width: 58px;
+  height: 24px;
+  background: var(--toggleBackground) !important;
+  border-radius: 50px;
+  position: absolute;
+  cursor: pointer;
+  top: 15px;
+  right: 0;
+  transform: translate(-50%, 75%);
+}
+
+/************ TOGGLE BUTTON IN DARK MODE ************/
+
 .toggle-bar {
   position: relative;
   display: inline-block;
@@ -76,10 +161,9 @@ header {
   transition: 0.4s;
   transform: translateY(-50%);
 }
-
-/* [data-theme="dark"] .slider {
+[data-theme="dark"] .slider {
   background-color: #ef5b59;
-} */
+}
 input:focus + .slider {
   box-shadow: 0 0 1px #20014d;
 }
@@ -91,401 +175,159 @@ input:focus + .slider {
   border-radius: 40px;
   padding: 0;
 }
-
 .slider:before {
   border-radius: 50%;
 }
-/* Slider hover effect unnecessary */
-/* .toggle-bar:hover .slider::before {
-  transform: translateX(14px);
-  transition: all 0.3s;
-}
-.toggle-bar:hover .slider {
-  background-color: #ee6a68;
-} */
 
-/* ------------------------------------------------- */
-/*Managing navbar as per theme start*/
+/***************** DARK THEME SETUP ****************/
+
 [data-theme='dark'] .navbar {
-  background: #343a40;
+  background-color: inherit;
 }
-[data-theme='dark'] .menu li {
+[data-theme='dark'] .navlink { /* vs .nav-item */
   color: #ddd;
 }
-[data-theme='dark'] .menu li:hover {
+[data-theme='dark'] .navlink:hover {
   color: #fff;
 }
-[data-theme='dark'] .menu li.active {
+[data-theme='dark'] .navlink.active {
   color: #fff;
   font-weight: bold;
 }
-[data-theme='dark'] .navbar ul {
-  background-color: #343a40;
-}
-
 [data-theme='dark'] .navbar button {
   color: #ffff;
 }
-
-[data-theme='dark'] .navbar .btn {
+[data-theme='dark'] .navbar-btn {
   color: var(--text);
   background-color: var(--lightBlue);
 }
-
-[data-theme='dark'] .navbar .btn:hover {
-  background-color: white;
-  color: var(--red);
+[data-theme='dark'] .navbar-btn:hover {
+  background-color: white; /* initial ? */
   border-color: currentColor;
+  color: var(--red);
 }
-
-[data-theme='dark'] .navbar .btn:active {
+[data-theme='dark'] .navbar-btn:active {
   box-shadow: var(--smShadow);
   transform: translateY(0.3rem);
 }
-
 [data-theme='dark'] .toggle-container {
   background: #fe6655;
 }
 
-/*Maneging navbar as per theme ends*/
-.navbar {
-  display: flex;
-  height: 80px;
-  align-items: center;
-  width: 100%;
-  background: white;
-}
+/**************** MORE-DROPDOWN ****************/
 
-.navbar #link-btn {
-  cursor: pointer;
-  color: black;
-}
-
-.logo {
-  width: auto;
-  height: 80px;
-  cursor: pointer;
-}
-
-/* menu class unnecessary if .navbar .menu*/
-/* .menu {
-  display: flex;
-  justify-content: flex-end !important;
-} */
-
-.navbar .menu {
-  display: flex;
-  flex: 1;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
-  list-style: none;
-  /* padding-left: 70px; */
-}
-
-.menu li {
-  cursor: pointer;
-  /* margin-bottom: 60px; */
-  /* line-height: 80px; */
-  font-size: clamp(1em, 20vw, 1.2em);
-  color: #423f3f;
-  transition: all ease-in 0.1s;
-}
-
-/* .menu li + li {
-  margin-left: -2vmin;
-} */
-
-.menu li:hover {
-  color: #000000;
-}
-
-/* margins unnecessary */
-/* .menu li + li {
-  margin-left: 20px;
-}
-.navbar .menu li:last-child {
-  margin-left: -30px;
-} */
-
-.menu li.active {
-  color: #000000;
-  font-weight: bold;
-}
-
-/* bottom border for link after clicked  */
-/* .nav-click {
-  border-bottom: 2px solid;
-  border-color: #fe6655;
-} no such classes used in HTML */
-
-.navbar a {
-  /* background: transparent; */
-  color: #000000;
-  font-size: 1em;
-  /* padding: 5px 20px; */
-} /* TODO: SAME FOR BUTTON IN NAVBAR ? */
-
-/* Added elements for nav */
-
-.menu li:hover {
-  border-bottom: 2px solid;
-  border-color: #fe6655;
-  transform: translateY(-3%);
-}
-.menu .dark:hover, .menu .user-forms:hover { /* SPECIFICITY AGAINST ABOVE */
-  border: none;
-  /* CHANGE: from 20px */
-  /* margin-left: 10px; */
-}
-
-.nav-button {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: absolute;
-  top: 15px;
-  right: 0;
-  transform: translate(-50%, 50%);
-}
-.navbar button {
-  background-color: transparent;
-}
-.nav-button span {
-  width: 100%;
-  background-color: var(--toggleBackground);
-  height: 3px;
-}
-
-/* new header styling */
-.btn {
-  cursor: pointer;
-  border: 2px solid var(--red);
-  border-radius: 5px;
-  color: var(--red);
-  font-size: clamp(1em, 20vw, 1.2em);
-  padding: 10px 15px !important;
-  border-radius: 5px;
-}
-
-*:focus {
-  outline: 0 !important;
-}
-
-/* .menu li:first-child {
-  position: absolute;
-  left: 8%;
-} TODO: What is it used for ?*/ 
-
-.navbar ul li a button {
-  background: transparent;
-}
-
-[data-theme='dark'] .navbar ul li a button {
-  color: #fff;
-}
-
-/* .navbar ul li a button:hover {
-  cursor: pointer;
-} */
-
-.toggle-bar-mobile {
-  margin: 0 54px;
-  width: 58px;
-  height: 24px;
-  background: var(--toggleBackground) !important;
-  border-radius: 50px;
-  position: absolute;
-  cursor: pointer;
-  top: 15px;
-  right: 0;
-  transform: translate(-50%, 75%);
-}
-
-.btn:hover {
-  color: #fff;
-  background-color: var(--darkRed);
-  transition: 0.3s ease;
-}
-
-[data-theme='dark'] .btn:hover {
-  color: #fff;
-  background-color: var(--pricingBackground);
-  transition: 0.3s ease;
-}
-
-/* dropdown styling */
-/* .dropbtn {
-  background-color: var(--red);
-  font-size: 16px;
-  border: none;
-  padding: 10px 20px 5px 20px!important;
-  border-radius: 5px;
-} */
-
-.dropdown {
+.more-dropdown {
   position: relative;
-  /* display: inline-block; unnecessary cause flex-child */ 
 }
-
-#caret-down { /* As space between it and the text "More" */
+.more-dropdown:hover .more-links {
+  display: block;
+}
+.caret-down {
   margin-left: 3px;
 }
-.dropdown-links {
-  display: none;
+.more-links {
+  z-index: 1;
   position: absolute;
+  left: -16px;
+  display: none;
   background-color: var(--mainBackground);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
   /* border-radius: var(--br); */
 }
 
-[data-theme='dark'] .dropdown-links {
-  /* REPETITION: See rule above
-  display: none;
-  position: absolute; */
-  /* background-color: var(--red); */
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: var(--br);
+[data-theme='dark'] .sublink:hover {
+  background-color: var(--red);
 }
 
-a.sub-link {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
+a.sublink {
   display: block;
+  padding: 4px 16px;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
 }
-
-[data-theme='dark'] a.sub-link {
+a.sublink:hover {
+  color: #fe6655;
+}
+[data-theme='dark'] a.sublink {
   color: var(--text);
-  /* REPETITION: See rule above
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block; */
 }
-
-a.sub-link:hover {
-  background-color: var(--lightBlue);
+a.sublink:first-child {
+  margin-top: 8px;
 }
-
-.dropdown:hover .dropdown-links {
-  display: block;
-}
-/* PREVIOUSLY .dropdown:hover .dropbtn  */
-.dropbtn:hover { /* TOCANCEL */
-  color: #ec705d;
+.btn-more:hover {
   transition: 0.3s ease;
+  /* color: #ec705d; */
 }
-/* end of dropdown styling */
+
+/* *********************************
+   ******** SMALLER SCREENS ********
+   ********************************/
 
 @media only screen and (max-width: 900px) {
-  .navbar {
-    padding: 0 50px;
-    background-color: white;
-    z-index: 100;
-  }
-
-  .navbar button {
-    background-color: transparent;
-  }
-  .toggle-bar {
+  .toggle-bar { /* one for "desktop" (this), one on smaller screen  */
     display: none;
   }
-  .navbar .menu {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    /* justify-content: space-around; */
-    /* text-align: center; */
+
+  header {
+    padding: 0 1em;
+  }
+  
+  .navbar-list {
+    position: absolute;
     top: 100px;
     left: 0;
-    position: absolute;
+    right: 0;/* width: 100%; bottom: 0; */
+    height: 0; /* invisible onload */
     background-color: rgb(240, 234, 234);
-    height: 0;
-    right: 0;/* width: 100%; */
+
     overflow: hidden;
     transition: all ease-in-out 0.3s;
     -webkit-transition: all ease-in-out 0.3s;
     -moz-transition: all ease-in-out 0.3s;
     -ms-transition: all ease-in-out 0.3s;
     -o-transition: all ease-in-out 0.3s;
+
+    /* for nav-items */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
   }
-  /* .user-forms {
-    align-self: center;
-    flex: 1 0 auto;
-  } */
-
-  .navbar ul.open {
-    height: 100vh;
-    overflow-y: scroll;
-    /* height: 500px; */
-    /* height: auto; */
+  .navbar-list.open {
+    height: initial; /* auto */
+    /* height: 100vh; */
   }
-  /* .dropdown, */
-  .menu a:not(.btn) { /* TODO: add & use classes */
-    display: block;
-    padding: 0;
-  }
-  .menu a.sub-link {
-    color: var(--red);
-  }
-  .sub-link:first-child {
-    border-top: solid var(--red);
-  }
-
-  /* restore menu items */
-  /* .navbar .menu-price,
-  .navbar .menu-team {
-    display: initial;
-  } */
-
-  /* .navbar .dropdown .drop-price,
-  .navbar .dropdown .drop-team {
-    display: none;
-  } */
-
-  /* .menu li {
-    margin-bottom: 30px;
-    margin-top: 30px;
-  } */
-
-  /* .dropdown:hover .dropdown-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  } */
-
-  /* .menu li + li {
-    margin-left: 0px;
-  } */
-
-  /* DEBUGGING */
-  .dropdown-links { /* To erase rule at line 337 */
-    display: initial;
+  .more-links {
+    display: block; /* none on bigger screen, desktop */
     position: initial;
-    background-color: initial; /* background-color: var(--mainBackground); */
-    /* min-width: 160px; */
-    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
-    z-index: initial;
-    /* border-radius: var(--br); */
+    background-color: initial;
   }
-  .dropbtn:hover { /* TOCANCEL */
-    color: initial;
-    transition: none;
+  .nav-item:hover {
+    border: none;
+    transform: none;
+    /* Consider matching their background with .sublink */
   }
-  .menu li:hover {
-    border:rgb(240, 234, 234);
-    transform: initial;
-  }
-  #caret-down {
+
+  a.sublink,
+  a.sublink:first-child,  /* Could use a class about */
+  .navlink {              /* QUICK RESET */
+    display: block;
+    margin: 0;
+    padding: .5em 1em;
+    border: none;         /* meant for About */
+  } 
+
+  .btn-more {             /* To visually have like a single menu */
     display: none;
+  }
+
+  a.sublink,
+  .nav-item + .nav-item { /* Draw a separator */
+    border-top: 1px solid red;
+  }
+  .navbar-btns {
+    margin: 2em 1em;      /* May be adjust later */
   }
 }
 
@@ -497,23 +339,12 @@ a.sub-link:hover {
   .toggle-bar-mobile {
     display: none;
   }
-  .navbar {
-    background-color: white;
-  }
-
-  .menu li {
-    line-height: normal;
-  }
-
-  .navbar span {
-    padding: 3px;
-  }
 }
 
 @media only screen and (max-width: 768px) {
   .slider:before {
-    position: absolute;
     content: '';
+    position: absolute;
     height: 18px;
     width: 18px;
     left: 4px;
@@ -521,9 +352,5 @@ a.sub-link:hover {
     background-color: #f1c40f;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-  }
-
-  .toggle-bar-mobile {
-    margin: 0 34px;
   }
 }
