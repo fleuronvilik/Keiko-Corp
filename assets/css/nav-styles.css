@@ -47,7 +47,7 @@ header {
 }
 
 .navlink {
-  color: #423f3f;
+  color: var(--primary-color);/* color: #423f3f; */
 }
 .navlink:hover,
 .navlink.active { /* REMOVE? */
@@ -133,7 +133,7 @@ header {
   height: 24px;
 }
 
-#toggle-checkbox {
+[id^=toggle-checkbox] { /* Use a class */
   opacity: 0;
   width: 0;
   height: 0;
@@ -184,19 +184,19 @@ input:focus + .slider {
 [data-theme='dark'] .navbar {
   background-color: inherit;
 }
-[data-theme='dark'] .navlink { /* vs .nav-item */
+/* [data-theme='dark'] .navlink {
   color: #ddd;
-}
+} */
 [data-theme='dark'] .navlink:hover {
-  color: #fff;
+  color: var(--red);/* #fff; */
 }
 [data-theme='dark'] .navlink.active {
-  color: #fff;
+  color: var(--red);/* #fff; */
   font-weight: bold;
 }
-[data-theme='dark'] .navbar button {
+/* [data-theme='dark'] .navbar button {
   color: #ffff;
-}
+} */
 [data-theme='dark'] .navbar-btn {
   color: var(--text);
   background-color: var(--lightBlue);
@@ -236,8 +236,8 @@ input:focus + .slider {
   /* border-radius: var(--br); */
 }
 
-[data-theme='dark'] .sublink:hover {
-  background-color: var(--red);
+[data-theme='dark'] a.sublink:hover {
+  color: var(--red);/* background-color: var(--red); */
 }
 
 a.sublink {
@@ -245,10 +245,11 @@ a.sublink {
   padding: 4px 16px;
   text-align: left;
   text-decoration: none;
-  color: inherit;
+  color: var(--primary-color); /* inherit */
 }
 a.sublink:hover {
-  color: #fe6655;
+  color: #000;
+  /* text-decoration: underline #fe6655; */
 }
 [data-theme='dark'] a.sublink {
   color: var(--text);
@@ -297,6 +298,9 @@ a.sublink:first-child {
   .navbar-list.open {
     height: initial; /* auto */
     /* height: 100vh; */
+  }
+  [data-theme='dark'] .navbar-list {
+      background-color: rgb(42, 30, 30);
   }
   .more-links {
     display: block; /* none on bigger screen, desktop */
